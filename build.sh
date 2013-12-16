@@ -101,7 +101,6 @@ rm -f out/target/product/*/obj/KERNEL_OBJ/.version
 
         echo -e "${bldblu}Starting compilation${txtrst}"
         mka bacon
-fi
 echo -e ""
 
 # Remove system folder (this will create a new build.prop with updated build time and date)
