@@ -104,6 +104,11 @@ rm -f out/target/product/*/obj/KERNEL_OBJ/.version
 fi
 echo -e ""
 
+# Remove system folder (this will create a new build.prop with updated build time and date)
+rm -f $OUTDIR/target/product/$device/system/build.prop
+rm -f $OUTDIR/target/product/$device/system/app/*.odex
+rm -f $OUTDIR/target/product/$device/system/framework/*.odex
+
 # Remove ota package zip
 rm -f out/target/product/*/thinkingbridge_*-ota-eng.*.zip
 
