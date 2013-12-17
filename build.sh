@@ -86,8 +86,6 @@ if [ ! -r "${DIR}/out/versions_checked.mk" ] && [ -n "$(java -version 2>&1 | gre
         JAVA_VERSION="java_version=${JVER}"
 fi
 
-rm -f out/target/product/*/obj/KERNEL_OBJ/.version
-
 # Setup environment
         echo -e ""
         echo -e "${bldblu}Setting up environment${txtrst}"
@@ -102,11 +100,6 @@ rm -f out/target/product/*/obj/KERNEL_OBJ/.version
         echo -e "${bldblu}Starting compilation${txtrst}"
         mka bacon
 echo -e ""
-
-# Remove system folder (this will create a new build.prop with updated build time and date)
-rm -f $OUTDIR/target/product/$device/system/build.prop
-rm -f $OUTDIR/target/product/$device/system/app/*.odex
-rm -f $OUTDIR/target/product/$device/system/framework/*.odex
 
 # Remove ota package zip
 rm -f out/target/product/*/thinkingbridge_*-ota-eng.*.zip
