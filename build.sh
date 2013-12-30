@@ -21,14 +21,6 @@ txtrst=$(tput sgr0)             # Reset
 : ${PREFS_FROM_SOURCE:="false"}
 : ${THREADS:="$(cat /proc/cpuinfo | grep "^processor" | wc -l)"}
 
-# If there is more than one jdk installed, use latest 6.x
-if [ "`update-alternatives --list javac | wc -l`" -gt 1 ]; then
-        JDK6=$(dirname `update-alternatives --list javac | grep "\-6\-"` | tail -n1)
-        JRE6=$(dirname ${JDK6}/../jre/bin/java)
-        export PATH=${JDK6}:${JRE6}:$PATH
-fi
-JVER=$(javac -version  2>&1 | head -n1 | cut -f2 -d' ')
-
 # Import command line parameters
 DEVICE="$1"
 EXTRAS="$2"
